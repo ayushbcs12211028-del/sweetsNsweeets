@@ -21,8 +21,8 @@ export default function SweetEditModal({ sweet, onClose, onUpdated }) {
         description: form.description
       });
 
-      onUpdated(); // refresh sweets
-      onClose();   // close modal
+      onUpdated(); 
+      onClose();  
     } catch (err) {
       alert(err.response?.data?.message || "Update failed");
     }
