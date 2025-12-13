@@ -22,7 +22,6 @@ export default function Register() {
         onSubmit={submit}
         className="w-full max-w-md bg-white rounded-lg shadow-md p-8"
       >
-        {/* Title */}
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-2">
           Create an account
         </h2>
@@ -30,7 +29,6 @@ export default function Register() {
           Fill in the details below to register
         </p>
 
-        {/* Name */}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Full name
@@ -48,7 +46,6 @@ export default function Register() {
           />
         </div>
 
-        {/* Email */}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Email address
@@ -66,7 +63,6 @@ export default function Register() {
           />
         </div>
 
-        {/* Password */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Password
@@ -84,15 +80,13 @@ export default function Register() {
           />
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded-md font-medium hover:bg-indigo-700 transition"
+          className="w-full bg-indigo-600 text-white py-2 rounded-md font-medium hover:bg-indigo-700 transition hover:cursor-pointer"
         >
           Register
         </button>
 
-        {/* Footer */}
         <div className="mt-6 text-center text-sm text-gray-600">
           Already have an account?{" "}
           <Link

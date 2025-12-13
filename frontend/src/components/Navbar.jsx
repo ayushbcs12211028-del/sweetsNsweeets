@@ -9,35 +9,45 @@ export default function Navbar({ isAdmin }) {
     navigate("/login");
   };
 
-  const linkClass = (path) =>
-    `px-3 py-2 rounded-md text-sm font-medium transition ${
-      location.pathname === path
-        ? "bg-indigo-600 text-white"
-        : "text-gray-700 hover:bg-gray-100"
-    }`;
+  const isActive = (path) => location.pathname === path;
+
+  const navLink =
+    "relative text-sm font-medium px-2 py-1 transition-colors duration-200";
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        
         <div
           onClick={() => navigate("/dashboard")}
-          className="text-lg font-semibold text-indigo-600 cursor-pointer"
+          className="cursor-pointer select-none text-xl font-bold text-gray-900"
         >
-          SweetsNSweets
+          Sweets<span className="text-indigo-600">N</span>Sweets
         </div>
 
-        <div className="flex items-center gap-2">
-          <Link to="/dashboard" className={linkClass("/dashboard")}>
+        <div className="flex items-center gap-6">
+          
+          <Link
+            to="/dashboard"
+            className={`${navLink} ${
+              isActive("/dashboard")
+                ? "text-indigo-600"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
             Dashboard
+            {isActive("/dashboard") && (
+              <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-indigo-600 rounded-full" />
+            )}
           </Link>
 
           {isAdmin && (
             <Link
               to="/admin"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                location.pathname === "/admin"
-                  ? "border border-indigo-600 text-indigo-600 bg-indigo-50"
-                  : "border border-indigo-300 text-indigo-600 hover:bg-indigo-50"
+              className={`text-xs font-semibold px-3 py-1 rounded-full transition-all ${
+                isActive("/admin")
+                  ? "bg-indigo-600 text-white"
+                  : "bg-indigo-50 text-indigo-600 hover:bg-indigo-100"
               }`}
             >
               Admin
@@ -46,7 +56,7 @@ export default function Navbar({ isAdmin }) {
 
           <button
             onClick={logout}
-            className="ml-3 px-4 py-2 rounded-md text-sm font-medium text-white bg-red-500 hover:bg-red-600"
+            className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors hover:cursor-pointer"
           >
             Logout
           </button>

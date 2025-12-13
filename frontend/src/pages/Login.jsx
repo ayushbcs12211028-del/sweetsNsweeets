@@ -21,7 +21,6 @@ export default function Login() {
         onSubmit={submit}
         className="w-full max-w-md bg-white rounded-lg shadow-md p-8"
       >
-        {/* Title */}
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-2">
           Sign in to your account
         </h2>
@@ -29,7 +28,6 @@ export default function Login() {
           Enter your credentials to continue
         </p>
 
-        {/* Email */}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Email address
@@ -44,7 +42,6 @@ export default function Login() {
           />
         </div>
 
-        {/* Password */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Password
@@ -59,15 +56,13 @@ export default function Login() {
           />
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded-md font-medium hover:bg-indigo-700 transition"
+          className="w-full bg-indigo-600 text-white py-2 rounded-md font-medium hover:bg-indigo-700 transition hover:cursor-pointer"
         >
           Sign In
         </button>
 
-        {/* Footer */}
         <div className="mt-6 text-center text-sm text-gray-600">
           Don’t have an account?{" "}
           <Link

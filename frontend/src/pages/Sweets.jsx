@@ -2,39 +2,43 @@ export default function SweetCard({ sweet, onBuy, onDelete, isAdmin }) {
   const outOfStock = sweet.quantity === 0;
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex flex-col justify-between">
-      {/* Sweet Info */}
-      <div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-1">
+    <div className="group bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+      
+      <div className="mb-4">
+        <h3 className="text-lg font-semibold text-gray-900">
           {sweet.name}
         </h3>
 
-        <p className="text-sm text-gray-500 mb-2">
-          Category: {sweet.category}
+        <p className="text-sm text-gray-500 mt-0.5">
+          {sweet.category}
         </p>
 
-        <p className="text-sm text-gray-700">
-          Price: <span className="font-medium">₹{sweet.price}</span>
-        </p>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-xl font-bold text-gray-900">
+            ₹{sweet.price}
+          </span>
 
-        <p
-          className={`text-sm mt-1 ${
-            outOfStock ? "text-red-600" : "text-green-600"
-          }`}
-        >
-          Stock: {sweet.quantity}
-        </p>
+          <span
+            className={`text-xs font-medium px-2 py-1 rounded-full ${
+              outOfStock
+                ? "bg-red-50 text-red-600"
+                : "bg-green-50 text-green-600"
+            }`}
+          >
+            {outOfStock ? "Out of Stock" : `${sweet.quantity} in stock`}
+          </span>
+        </div>
       </div>
 
       {/* Actions */}
-      <div className="mt-4 flex items-center gap-2">
+      <div className="mt-auto flex gap-2">
         <button
           disabled={outOfStock}
           onClick={() => onBuy(sweet._id)}
-          className={`flex-1 py-2 rounded-md text-sm font-medium text-white transition ${
+          className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
             outOfStock
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-indigo-600 hover:bg-indigo-700"
+              ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+              : "bg-indigo-600 text-white hover:bg-indigo-700"
           }`}
         >
           Purchase
@@ -43,7 +47,7 @@ export default function SweetCard({ sweet, onBuy, onDelete, isAdmin }) {
         {isAdmin && (
           <button
             onClick={() => onDelete(sweet._id)}
-            className="px-3 py-2 rounded-md text-sm font-medium text-red-600 border border-red-500 hover:bg-red-50 transition"
+            className="px-3 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-red-600 hover:bg-red-50 transition"
           >
             Delete
           </button>
